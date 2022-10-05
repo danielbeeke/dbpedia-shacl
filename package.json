@@ -1,0 +1,16 @@
+{
+  "name": "dbpedia-shacl",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "deno run --allow-all https://deno.land/x/shacl_to_type@v0.0.8/cli.ts shapes src/models dbp",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0"
+  }
+}

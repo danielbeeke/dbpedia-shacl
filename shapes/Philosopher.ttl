@@ -1,0 +1,51 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dbp: <http://dbpedia.org/property/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+
+dbp:Philosopher
+    a sh:NodeShape ;
+
+    sh:targetClass <http://dbpedia.org/ontology/Philosopher> ;
+
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype rdf:langString ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    sh:property [
+        sh:path rdf:type ;
+        sh:minCount 1 ;
+    ] ;
+
+    sh:property [
+        sh:path dbp:birthPlace ;
+        sh:node dbo:Location ;
+    ] ;
+
+    sh:property [
+        sh:path dbp:birthDate ;
+        sh:datatype xsd:date;
+        sh:maxCount 1 ;
+    ] .
+
+dbo:Location
+    a sh:NodeShape ;
+
+    sh:property [
+        sh:path rdf:type ;
+        sh:minCount 1 ;
+    ] ;
+
+    sh:targetClass <http://dbpedia.org/ontology/Location> ;
+
+    sh:property [
+        sh:path dbp:name ;
+        sh:datatype rdf:langString ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
